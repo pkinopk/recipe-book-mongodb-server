@@ -66,3 +66,8 @@ app.get('/retrieverecipe/:id', function(req, res) {
 
 app.listen(process.env.PORT || 8000);
 console.log('Running locally at port 8000...');
+
+// Trick to prevent Heroku from sleeping
+setInterval(function() {
+  http.get('https://recipe-book-mongodb-server.herokuapp.com/');
+}, 300000); // every 5 minutes (300000)
