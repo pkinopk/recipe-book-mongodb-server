@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 const cors = require('cors');
 var corsOptions = {
   origin: '*',
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(cors(corsOptions));
 
@@ -14,7 +14,9 @@ app.use(bodyParser.json());
 Recipe = require('./models/recipe');
 
 // Connect to Mongoose
-mongoose.connect('mongodb://localhost');
+mongoose.connect(
+  'mongodb://recipe_book:heroku220187@ds239412.mlab.com:39412/heroku_8xk8zhk3'
+);
 var db = mongoose.connection;
 
 app.get('/recipelist', function(req, res) {
