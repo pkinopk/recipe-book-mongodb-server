@@ -19,6 +19,11 @@ mongoose.connect(
 );
 var db = mongoose.connection;
 
+app.get('/', function(req, res) {
+  res.header('Content-Type', 'application/json');
+  res.json({ status: 'Working!' });
+});
+
 app.get('/recipelist', function(req, res) {
   Recipe.getRecipes(function(err, recipes) {
     if (err) {
@@ -59,5 +64,5 @@ app.get('/retrieverecipe/:id', function(req, res) {
   });
 });
 
-app.listen(8000);
-console.log('Running on port 8000...');
+app.listen(process.env.PORT || 8000);
+console.log('Running locally at port 8000...');
